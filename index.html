@@ -1,90 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>我的网页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue!</title>
     <style>
-        /* 样式部分 */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #f0f8ff;
+            color: #333;
             text-align: center;
-            padding: 1em 0;
+            padding: 50px;
         }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #2c3e50;
         }
         .container {
-            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        .card {
-            background-color: white;
-            padding: 20px;
-            margin: 20px 0;
+        .box {
+            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        footer {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            position: fixed;
+            transition: transform 0.2s;
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .link {
+            display: block;
             width: 100%;
-            bottom: 0;
+            height: 100%;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            line-height: 150px;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>欢迎来到我的网页</h1>
-</header>
-
-<nav>
-    <a href="#home">首页</a>
-    <a href="#about">关于我们</a>
-    <a href="#contact">联系我们</a>
-</nav>
-
-<div class="container">
-    <div class="card">
-        <h2>这是一个简单的HTML示例。</h2>
-        <p>你可以在这里添加更多内容。</p>
-        <button onclick="displayMessage()">点击我</button>
-        <p id="message"></p>
+    <h1>Bienvenue!</h1>
+    <div class="container">
+        <div class="box">
+            <a href="https://www.baidu.com" target="_blank" class="link">Baidu</a>
+        </div>
+        <div class="box">
+            <a href="https://www.google.com" target="_blank" class="link">Google</a>
+        </div>
     </div>
-</div>
-
-<footer>
-    <p>版权所有 &copy; 2024 我的网页</p>
-</footer>
-
-<script>
-    /* JavaScript部分 */
-    function displayMessage() {
-        document.getElementById('message').innerText = '你点击了按钮！';
-    }
-</script>
-
 </body>
 </html>
