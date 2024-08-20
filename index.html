@@ -127,15 +127,58 @@
         }
 
         function downloadFile(filename) {
-            alert('正在下载文件：' + filename);
-            // 在这里添加文件下载逻辑
+    fetch('/download?file=' + encodeURIComponent(filename), {
+        method: 'GET'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络响应失败');
         }
+        return response.blob();
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+        alert('下载过程中发生错误: ' + error.message);
+    });
+}
 
-        function uploadFile(input) {
-            const file = input.files[0];
-            alert('已选择文件：' + file.name);
-            // 在这里添加文件上传逻辑
+
+      function uploadFile(input) {
+    const file = input.files[0];
+    if (!file) {
+        alert('请选择一个文件上传');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('文件上传成功: ' + file.name);
+        } else {
+            alert('文件上传失败: ' + data.message);
         }
+    })
+    .catch(error => {
+        alert('上传过程中发生错误: ' + error.message);
+    });
+}
+
     </script>
 </body>
 </html>
