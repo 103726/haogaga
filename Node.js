@@ -40,5 +40,5 @@ app.get('/download', (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+    console.log('Server started on http://192.168.30.233:3000');
 });
